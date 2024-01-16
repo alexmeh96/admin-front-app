@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth";
 import {auth} from "../../firebase";
+import {Button} from "../../components/ui/button";
 
 const HomePage = () => {
     const [email, setEmail] = useState('');
@@ -50,7 +51,7 @@ const HomePage = () => {
         <div>
             <div>Здарова, это админка на реакте!</div>
             <div>Кнопка попрежнему ничего не делает, гы</div>
-            <button onClick={click}>click</button>
+            <Button onClick={click}>click</Button>
             {/*<button className="button2">click</button>*/}
             {/*<hr/>*/}
             {/*<form onSubmit={handleSignUp}>*/}

@@ -25,7 +25,7 @@ export default (env: EnvVariables) => {
             path: path.resolve(__dirname, 'build'),
             filename: '[name].[contenthash].js',
             clean: true,
-            publicPath: "/",
+            // publicPath: "/",
         },
         plugins: [
             new HtmlWebpackPlugin({template: path.resolve(__dirname, 'public', 'index.html')}),

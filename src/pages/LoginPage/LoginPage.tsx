@@ -61,10 +61,10 @@ const LoginPage = (props: Props) => {
         <>
             <div
                 className="bg-gradient-to-r from-[#F28383] from-10% via-[#9D6CD2] via-30% to-[#481EDC] to-90% flex items-center justify-center h-screen">
-                <div className="max-w-[960px] bg-black-dark grid grid-cols-2 items-center gap-20 p-5 rounded-2xl">
-                    <div className="">
-                        <img src={signup} alt=""/>
-                    </div>
+                <div className="max-w-[960px] bg-black-dark grid items-center px-16 py-24 rounded-2xl">
+                    {/*<div className="">*/}
+                    {/*    /!*<img src={signup} alt=""/>*!/*/}
+                    {/*</div>*/}
 
                     <div className="max-w-80 grid gap-5">
                         <h1 className="text-5xl font-bold text-white">Sign in</h1>
