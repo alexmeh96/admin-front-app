@@ -40,35 +40,34 @@ const HomePage = () => {
     }
 
     async function click () {
-        console.log(auth.currentUser)
-        let idTokenResult = await auth.currentUser.getIdTokenResult();
-        console.log(idTokenResult)
+        // console.log(auth.currentUser)
+        // let idTokenResult = await auth.currentUser.getIdTokenResult();
+        // console.log(idTokenResult)
     }
 
 
     return (
         <div>
             <div>Здарова, это админка на реакте!</div>
-            <div>Кнопки ничего не делают, гы</div>
-            <button className="button1" onClick={click}>click</button>
+            <div>Кнопка попрежнему ничего не делает, гы</div>
+            <button onClick={click}>click</button>
             {/*<button className="button2">click</button>*/}
-            <hr/>
-            <form onSubmit={handleSignUp}>
-                <input type="text" placeholder="email" value={email} onChange={e => setEmail(e.target.value)}/>
-                <input type="password" placeholder="password" value={password}
-                       onChange={e => setPassword(e.target.value)}/>
-                <button type="submit">SignUp</button>
-            </form>
-            <hr/>
-            <form onSubmit={handleSignIn}>
-                <input type="text" placeholder="email" value={email} onChange={e => setEmail(e.target.value)}/>
-                <input type="password" placeholder="password" value={password}
-                       onChange={e => setPassword(e.target.value)}/>
-                <button type="submit">SignIn</button>
-            </form>
-            <hr/>
-            <button onClick={handleLogout}>Logout</button>
-
+            {/*<hr/>*/}
+            {/*<form onSubmit={handleSignUp}>*/}
+            {/*    <input type="text" placeholder="email" value={email} onChange={e => setEmail(e.target.value)}/>*/}
+            {/*    <input type="password" placeholder="password" value={password}*/}
+            {/*           onChange={e => setPassword(e.target.value)}/>*/}
+            {/*    <button type="submit">SignUp</button>*/}
+            {/*</form>*/}
+            {/*<hr/>*/}
+            {/*<form onSubmit={handleSignIn}>*/}
+            {/*    <input type="text" placeholder="email" value={email} onChange={e => setEmail(e.target.value)}/>*/}
+            {/*    <input type="password" placeholder="password" value={password}*/}
+            {/*           onChange={e => setPassword(e.target.value)}/>*/}
+            {/*    <button type="submit">SignIn</button>*/}
+            {/*</form>*/}
+            {/*<hr/>*/}
+            {/*<button onClick={handleLogout}>Logout</button>*/}
         </div>
     );
 }

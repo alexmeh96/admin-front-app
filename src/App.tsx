@@ -1,6 +1,4 @@
 import {Outlet, Link} from "react-router-dom"
-import "./App.css"
-import "./App2.scss"
 import {AuthActionKind, useAuth, useAuthDispatch} from "./context/Auth";
 import React from "react";
 
@@ -10,18 +8,20 @@ export const App = () => {
 
     function handleClick() {
         dispatch({
-            type:  AuthActionKind.CLEAR,
+            type: AuthActionKind.CLEAR,
             payload: null
         })
     }
+
     return (
         <>
-            <div>app</div>
-            <Link to={``}>home</Link>
-            <Link to={`private`}>private</Link>
-            <Link to={`public`}>public</Link>
+            <div><Link to={``}>home</Link></div>
+            <div><Link to={`private`}>private</Link></div>
+            <div><Link to={`public`}>public</Link></div>
             {
-                auth && <button onClick={handleClick}>LogOut</button>
+                auth && <div>
+                    <button onClick={handleClick}>LogOut</button>
+                </div>
             }
             <Outlet/>
         </>

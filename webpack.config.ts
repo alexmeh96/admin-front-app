@@ -37,11 +37,18 @@ export default (env: EnvVariables) => {
         ].filter(Boolean),
         module: {
             rules: [
+
+                {
+                    test: /\.(png|jpg|gif|svg)$/,
+                    type: 'asset/resource',
+                },
+
                 {
                     test: /\.css$/i,
                     use: [
                         isDev ? "style-loader" : MiniCssExtractPlugin.loader,
-                        "css-loader"
+                        "css-loader",
+                        'postcss-loader'
                     ],
                 },
                 {

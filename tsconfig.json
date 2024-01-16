@@ -14,5 +14,6 @@
     "compilerOptions": {
       "module": "CommonJS"
     }
-  }
+  },
+  "include": ["src", "types/asset.d.ts"]
 }

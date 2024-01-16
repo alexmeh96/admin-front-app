@@ -7,7 +7,6 @@ import PrivatePage from "../pages/PrivatePage/PrivatePage";
 import PublicPage from "../pages/PubluicPage/PublicPage";
 import RequireAuth from "../components/auth/RequireAuth";
 
-
 export const router = createBrowserRouter([
 // export const router = createHashRouter([
     {
@@ -15,7 +14,7 @@ export const router = createBrowserRouter([
         element: <App/>,
         errorElement: <ErrorPage/>,
         children: [
-            {path: "/", element: <HomePage/>},
+            {path: "/", element: <RequireAuth redirectTo="/login"><HomePage/></RequireAuth>},
             {path: "/private", element: <RequireAuth redirectTo="/login"><PrivatePage/></RequireAuth>},
             {path: "/private/:ticker", element: <RequireAuth redirectTo="/login"><PrivatePage/></RequireAuth>},
             {path: "/public", element: <PublicPage/>},
