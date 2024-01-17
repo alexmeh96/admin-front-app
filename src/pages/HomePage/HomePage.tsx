@@ -1,49 +1,16 @@
-import React, {useState} from 'react';
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth";
-import {auth} from "../../firebase";
+import React from 'react';
 import {Button} from "../../components/ui/button";
+import {testServerGet, testServerPost} from "../../service/auth/auth";
 
 const HomePage = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
 
-    async function handleSignUp(e:any) {
-        e.preventDefault()
 
-        try {
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-
-            console.log(userCredential)
-        } catch (error) {
-            console.error(error)
-        }
+    async function click1 () {
+        await testServerGet()
     }
 
-    async function handleSignIn(e:any) {
-        e.preventDefault()
-
-        try {
-            const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            console.log(userCredential)
-        } catch (error) {
-            console.error(error)
-        }
-    }
-
-    async function handleLogout(e:any) {
-
-        try {
-            await signOut(auth);
-            console.log(auth, 'qqq1')
-        } catch (error) {
-            console.error(error)
-        }
-    }
-
-    async function click () {
-        // console.log(auth.currentUser)
-        // let idTokenResult = await auth.currentUser.getIdTokenResult();
-        // console.log(idTokenResult)
+    async function click2 () {
+        await testServerPost()
     }
 
 
@@ -51,24 +18,8 @@ const HomePage = () => {
         <div>
             <div>Здарова, это админка на реакте!</div>
             <div>Кнопка попрежнему ничего не делает, гы</div>
-            <Button onClick={click}>click</Button>
-            {/*<button className="button2">click</button>*/}
-            {/*<hr/>*/}
-            {/*<form onSubmit={handleSignUp}>*/}
-            {/*    <input type="text" placeholder="email" value={email} onChange={e => setEmail(e.target.value)}/>*/}
-            {/*    <input type="password" placeholder="password" value={password}*/}
-            {/*           onChange={e => setPassword(e.target.value)}/>*/}
-            {/*    <button type="submit">SignUp</button>*/}
-            {/*</form>*/}
-            {/*<hr/>*/}
-            {/*<form onSubmit={handleSignIn}>*/}
-            {/*    <input type="text" placeholder="email" value={email} onChange={e => setEmail(e.target.value)}/>*/}
-            {/*    <input type="password" placeholder="password" value={password}*/}
-            {/*           onChange={e => setPassword(e.target.value)}/>*/}
-            {/*    <button type="submit">SignIn</button>*/}
-            {/*</form>*/}
-            {/*<hr/>*/}
-            {/*<button onClick={handleLogout}>Logout</button>*/}
+            <Button onClick={click1}>testServerGet</Button>
+            <Button onClick={click2}>testServerPost</Button>
         </div>
     );
 }

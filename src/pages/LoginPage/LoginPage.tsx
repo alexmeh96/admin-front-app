@@ -1,30 +1,22 @@
 import React, {useState} from 'react';
-import {AuthActionKind, useAuthDispatch} from "../../context/Auth";
+import {useAuthDispatch} from "../../context/Auth";
 import {Button} from "../../components/ui/button";
 import {Input} from "../../components/ui/input";
 import {Loader2} from "lucide-react";
-import {
-    Form,
-    FormControl,
-    FormDescription,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage
-} from "../../components/ui/form";
+import {Form, FormControl, FormField, FormItem, FormMessage} from "../../components/ui/form";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import * as z from "zod"
-import  signup from "../../assets/signup-background.svg"
+import {login} from "../../service/auth/auth";
 
 interface Props {
 }
 
 const FormSchema = z.object({
-    email: z.string().min(2, {
+    email: z.string().min(0, {
         message: "Email must be at least 2 characters.",
     }),
-    password: z.string().min(2, {
+    password: z.string().min(0, {
         message: "Password must be at least 2 characters.",
     }),
 })
@@ -45,15 +37,30 @@ const LoginPage = (props: Props) => {
     async function onSubmit(data: z.infer<typeof FormSchema>) {
         console.log(data, 'qqq1')
         setLoad(true)
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        dispatch({
-            type: AuthActionKind.ADD,
-            payload: {
-                id: "1",
-                username: "alex",
-                token: "token"
-            }
-        })
+
+        try {
+            // await new Promise((resolve) => setTimeout(resolve, 1000));
+            await login(data.email, data.password)
+
+            const token = "AMf-vBzAlaCHVaI9xU5pu5OYarBIRzInmqKFSdttWQC1cyAE7iyjWs3DQW0OSvJYGnxG6w4nO3jWOTBIusYbTeYIxPeYJtf9J3T_mcCd9J0GX5vklui8UX5F0U9ERK0OFtjeqAhAksA6F1KFF2F0IN-Q2ZijhmSVYWAcY-OVMsTCp3CP0IqNYO9pFox7afrPxH-RPe1HLuZwy6P6WDh1x9xPSRToPva4bg"
+
+
+            // await loginSdk(data.email, data.password)
+
+            // await updateToken(token)
+
+            // dispatch({
+            //     type: AuthActionKind.ADD,
+            //     payload: {
+            //         id: "1",
+            //         username: "alex",
+            //         token: "token"
+            //     }
+            // })
+        } catch (err) {
+            console.error(err)
+        }
+
         setLoad(false)
     }
 
